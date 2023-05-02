@@ -1,6 +1,8 @@
 <div class="card card-info card-outline" data-task-id="1">
   <div class="card-header">
-    <h5 class="card-title">Зробити головну</h5>
+    <h5 class="card-title">
+      <?php echo $task['name']; ?>
+    </h5>
     <div class="card-tools">
       <a href="#" class="btn btn-tool btn-link">#3</a>
       <a href="#" class="btn btn-tool">
@@ -10,8 +12,7 @@
   </div>
   <div class="card-body">
     <p>
-      Зробити головну сторінку списку задач з можливістю перегляду,
-      створення, редагування, видалення задач.
+      <?php echo $task['date']; ?>
     </p>
     <a href="#" class="btn btn-tool">
       <i class="fas fa-file"></i>

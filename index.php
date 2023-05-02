@@ -1,13 +1,58 @@
 <?php
 
-$columns = [
+$status = [
     'backlog',
     'to-do',
     'in-progress',
     'done'
 ];
 
-$task = $columns[rand(0, 3)];
+$project = [
+    "Вхідні",
+    "Навчання",
+    "Робота",
+    "Домашні справи",
+    "Авто"
+];
+
+$tasksList = [
+    [
+        'name' => 'Співбесіда в ІТ компанії',
+        'date' => '01.07.2023',
+        'category' => $project[2],
+        'status' => $status[0]
+    ],
+    [
+        'name' => 'Виконати тестове завдання',
+        'date' => '25.07.2023',
+        'category' => $project[2],
+        'status' => $status[0]
+    ],
+    [
+        'name' => 'Зробити завдання до першого уроку',
+        'date' => '27.04.2023',
+        'category' => $project[1],
+        'status' => $status[3]
+    ],
+    [
+        'name' => 'Зустрітись з друзями',
+        'date' => '14.05.2023',
+        'category' => $project[0],
+        'status' => $status[1]
+    ],
+    [
+        'name' => 'Купити корм для кота',
+        'date' => null,
+        'category' => $project[3],
+        'status' => $status[2]
+    ],
+    [
+        'name' => 'Замовити піцу',
+        'date' => null,
+        'category' => $project[3],
+        'status' => $status[1]
+    ],
+];
 
 ?>
 
@@ -89,15 +134,17 @@ $task = $columns[rand(0, 3)];
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
+            <?php foreach ($project as $item): ?>
             <li class="nav-item">
               <a href="index.php" class="nav-link active">
                 <i class="nav-icon fas fa-columns"></i>
                 <p>
-                  Назва проекту
+                  <?php echo $item; ?>
                   <span class="badge badge-info right">2</span>
                 </p>
               </a>
             </li>
+            <?php endforeach; ?>
             <li class="nav-item">
               <a href="index.php" class="nav-link bg-olive">
                 <i class="nav-icon fas fa-plus"></i>
@@ -152,8 +199,10 @@ $task = $columns[rand(0, 3)];
             </div>
             <div class="card-body connectedSortable" data-status="backlog">
               <?php
-                  if ($task == 'backlog') {
-                    include('pages/components/task.html');
+                  foreach ($tasksList as $task) {
+                    if ($task['status'] == 'backlog') {
+                      include('pages/components/task.html');
+                    }
                   }
               ?>
             </div>
@@ -166,9 +215,11 @@ $task = $columns[rand(0, 3)];
             </div>
             <div class="card-body connectedSortable" data-status="to-do">
               <?php
-                  if ($task == 'to-do') {
-                    include('pages/components/task.html');
-                  }
+                foreach ($tasksList as $task) {
+                    if ($task['status'] == 'to-do') {
+                      include('pages/components/task.html');
+                    }
+                }
               ?>
             </div>
           </div>
@@ -180,9 +231,11 @@ $task = $columns[rand(0, 3)];
             </div>
             <div class="card-body connectedSortable" data-status="in-progress">
               <?php
-                  if ($task == 'in-progress') {
+                foreach ($tasksList as $task) {
+                  if ($task['status'] == 'in-progress') {
                     include('pages/components/task.html');
                   }
+                }
               ?>
             </div>
           </div>
@@ -194,9 +247,11 @@ $task = $columns[rand(0, 3)];
             </div>
             <div class="card-body connectedSortable" data-status="done">
               <?php
-                  if ($task == 'done') {
+                foreach ($tasksList as $task) {
+                  if ($task['status'] == 'done') {
                     include('pages/components/task.html');
                   }
+                }
               ?>
             </div>
           </div>
