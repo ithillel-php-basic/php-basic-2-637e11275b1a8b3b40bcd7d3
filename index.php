@@ -1,5 +1,17 @@
 <?php
 
+function tasksNumber($tasks, $projectName) {
+  $count = 0;
+
+  foreach ($tasks as $task) {
+    if ($task['category'] === $projectName) {
+      $count++;
+    }
+  }
+
+  return $count;
+}
+
 $status = [
     'backlog',
     'to-do',
@@ -140,7 +152,7 @@ $tasksList = [
                 <i class="nav-icon fas fa-columns"></i>
                 <p>
                   <?php echo $item; ?>
-                  <span class="badge badge-info right">2</span>
+                  <span class="badge badge-info right"><?php echo tasksNumber($tasksList, $item); ?></span>
                 </p>
               </a>
             </li>
