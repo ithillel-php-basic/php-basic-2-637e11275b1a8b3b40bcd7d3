@@ -11,7 +11,7 @@ function tasksNumber($tasks, $projectName) {
     }
   }
 
-  echo $count;
+  return $count;
 }
 
 $status = [
@@ -80,7 +80,7 @@ $main = renderTemplate('main.php', [
     'content' => $kanban,
 ]);
 
-$layout = renderTemplate('main.php', [
+$layout = renderTemplate('layout.php', [
     'main' => $main,
     'title' => "Завдання та проекти | ДошкаЗавдання та проекти | Дошка"
 ]);

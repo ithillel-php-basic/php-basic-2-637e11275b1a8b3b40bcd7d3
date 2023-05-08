@@ -12,7 +12,7 @@
   </div>
   <div class="card-body">
     <p>
-      <?= $task['date']; ?>
+      <?= $task['date'] ?? ''; ?>
     </p>
     <a href="#" class="btn btn-tool">
       <i class="fas fa-file"></i>
