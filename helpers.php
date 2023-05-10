@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Перевіряє передану дату на відповідність формату 'ГГГГ-ММ-ДД'
  *
@@ -142,4 +143,73 @@ function renderTemplate($name, array $data = []) {
     $result = ob_get_clean();
 
     return $result;
+}
+
+function tasksNumber($tasks, $projectName) {
+    $count = 0;
+
+    foreach ($tasks as $task) {
+        if ($task['category'] === $projectName) {
+            $count++;
+        }
+    }
+
+    return $count;
+}
+
+function timeToDedline($date) {
+    if ($date !== null) {
+
+        date_default_timezone_set("Europe/Kyiv");
+
+        $now = strtotime("now");
+        $deadline = strtotime($date);
+
+        if ($now < $deadline) {
+            return hoursDaysCalculator($deadline - $now);
+        }
+
+        if ($now >= $deadline) {
+
+            $secondsOverdue = $deadline - $now;
+
+            return hoursDaysCalculator($secondsOverdue);
+        }
+    }
+}
+
+function hoursDaysCalculator($seconds): array {
+    $info = [];
+
+    if ($seconds < 0) {
+        $overdueSeconds = $seconds * -1;
+
+        $overdueHours = round((($overdueSeconds / 60) / 60), 0,PHP_ROUND_HALF_UP);
+        $overdueDays = round(($overdueHours / 24), 0, PHP_ROUND_HALF_UP);
+        $overdueHoursLeft = $overdueHours % 24;
+
+        $info['badge_color'] = 'danger';
+        $info['time_left'] = "$overdueDays days $overdueHoursLeft hours overdue";
+    }
+
+    if ($seconds > 0) {
+        $hours = round((($seconds / 60) / 60), 0,PHP_ROUND_HALF_UP);
+        $days = round(($hours / 24), 0, PHP_ROUND_HALF_UP);
+
+        if ($days > 1) {
+            $info['badge_color'] = 'success';
+            $info['time_left'] = "$days days left";
+
+        } elseif ($days == 1) {
+            $info['badge_color'] = 'danger';
+            $info['time_left'] = "24 hours left";
+
+        } else {
+            $hoursLeft = $hours % 24;
+            $info['badge_color'] = 'danger';
+            $info['time_left'] = "$hoursLeft hours left";
+        }
+    }
+
+    return $info;
 }

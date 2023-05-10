@@ -1,18 +1,5 @@
 <?php
-
 require 'helpers.php';
-
-function tasksNumber($tasks, $projectName) {
-  $count = 0;
-
-  foreach ($tasks as $task) {
-    if ($task['category'] === $projectName) {
-      $count++;
-    }
-  }
-
-  return $count;
-}
 
 $status = [
     'backlog',
@@ -69,7 +56,8 @@ $tasksList = [
 ];
 
 $kanban = renderTemplate('kanban.php', [
-    'tasksList' => $tasksList
+    'tasksList' => $tasksList,
+    'info' => 'info'
 ]);
 
 $main = renderTemplate('main.php', [
