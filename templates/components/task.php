@@ -1,7 +1,7 @@
 <div class="card card-info card-outline" data-task-id="1">
   <div class="card-header">
     <h5 class="card-title">
-      <?php echo $task['name']; ?>
+      <?= $task['name']; ?>
     </h5>
     <div class="card-tools">
       <a href="#" class="btn btn-tool btn-link">#3</a>
@@ -12,7 +12,7 @@
   </div>
   <div class="card-body">
     <p>
-      <?php echo $task['date']; ?>
+      <?= $task['date'] ?? ''; ?>
     </p>
     <a href="#" class="btn btn-tool">
       <i class="fas fa-file"></i>
