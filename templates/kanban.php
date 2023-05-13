@@ -36,7 +36,7 @@
             <div class="card-body connectedSortable" data-status="backlog">
                 <?php foreach ($tasksList as $task): ?>
                     <?php if ($task['status'] == 'backlog'): ?>
-                        <?php echo renderTemplate('components/task.php', ['task' => $task]); ?>
+                        <?php echo renderTemplate('components/task.php', ['task' => $task, 'info' => timeToDedline($task['date'])]); ?>
                     <?php endif; ?>
                 <?php endforeach; ?>
             </div>
@@ -50,7 +50,7 @@
             <div class="card-body connectedSortable" data-status="to-do">
                 <?php foreach ($tasksList as $task): ?>
                     <?php if ($task['status'] == 'to-do'): ?>
-                        <?php echo renderTemplate('components/task.php', ['task' => $task]); ?>
+                        <?php echo renderTemplate('components/task.php', ['task' => $task, 'info' => timeToDedline($task['date'])]); ?>
                     <?php endif; ?>
                 <?php endforeach; ?>
             </div>
@@ -64,7 +64,7 @@
             <div class="card-body connectedSortable" data-status="in-progress">
                 <?php foreach ($tasksList as $task): ?>
                     <?php if ($task['status'] == 'in-progress'): ?>
-                        <?php echo renderTemplate('/components/task.php', ['task' => $task]); ?>
+                        <?php echo renderTemplate('/components/task.php', ['task' => $task, 'info' => timeToDedline($task['date'])]); ?>
                     <?php endif; ?>
                 <?php endforeach; ?>
             </div>
@@ -78,7 +78,7 @@
             <div class="card-body connectedSortable" data-status="done">
                 <?php foreach ($tasksList as $task): ?>
                     <?php if ($task['status'] == 'done'): ?>
-                        <?php echo renderTemplate('/components/task.php', ['task' => $task]); ?>
+                        <?php echo renderTemplate('/components/task.php', ['task' => $task, 'info' => timeToDedline($task['date'])]); ?>
                     <?php endif; ?>
                 <?php endforeach; ?>
             </div>
