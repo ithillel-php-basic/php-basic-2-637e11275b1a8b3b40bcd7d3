@@ -207,7 +207,7 @@ function hoursDaysCalculator($seconds): array {
         } else {
             $hoursLeft = $hours % 24;
             $info['badge_color'] = 'danger';
-            $info['time_left'] = "$hoursLeft hours left";
+            $info['time_left'] = $hoursLeft === 1 ? "$hoursLeft hour left" : "$hoursLeft hours left";
         }
     }
 
