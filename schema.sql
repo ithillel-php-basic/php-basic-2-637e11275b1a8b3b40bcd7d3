@@ -1,5 +1,5 @@
-CREATE DATABASE `test_db`;
-GRANT ALL PRIVILEGES ON `test_db`.* TO `test_user`@'localhost' IDENTIFIED BY 'dbpassword01';
+CREATE DATABASE `php_basic_db`;
+GRANT ALL PRIVILEGES ON `php_basic_db`.* TO `php_basic_user`@'localhost' IDENTIFIED BY 'dbpassword01';
 FLUSH PRIVILEGES;
 
 create table if not exists users
