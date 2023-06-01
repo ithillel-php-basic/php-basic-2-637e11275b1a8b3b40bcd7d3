@@ -78,7 +78,7 @@
             <div class="card-body connectedSortable" data-status="done">
                 <?php foreach ($tasksList as $task): ?>
                     <?php if ($task['status'] == 'done'): ?>
-                        <?php echo renderTemplate('/components/task.php', ['task' => $task, 'info' => timeToDedline($task['date'])]); ?>
+                        <?php echo renderTemplate('/components/task.php', ['task' => $task, 'info' => '']); ?>
                     <?php endif; ?>
                 <?php endforeach; ?>
             </div>

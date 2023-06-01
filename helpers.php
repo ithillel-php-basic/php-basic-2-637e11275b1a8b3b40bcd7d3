@@ -213,3 +213,12 @@ function hoursDaysCalculator($seconds): array {
 
     return $info;
 }
+
+function getCategoryName(array $projects, string $projectId): string {
+	foreach ($projects as $value) {
+		if ($value['id'] == $projectId) {
+			return $value['name'];
+		}
+	}
+	return '';
+}
